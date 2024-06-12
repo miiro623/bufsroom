@@ -4,8 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.sql.Date;
 
@@ -13,16 +12,28 @@ import java.sql.Date;
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class AppForm {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Date start_date;
-    private String start_time;
-    private String end_time;
-    private String _school;
-    private String _classroom;
-    private String _purpose;
+    private Date startDate;
+    private String startTime;
+    private String endTime;
+    private String school;
+    private String classroom;
+    private String purpose;
+
+    @Builder
+    public AppForm(Date startDate, String startTime, String endTime, String school, String classroom, String purpose) {
+        this.startDate = startDate;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.school = school;
+        this.classroom = classroom;
+        this.purpose = purpose;
+    }
+
 }

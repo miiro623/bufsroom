@@ -36,7 +36,6 @@
         <h1 class="th1">강의실 예약</h1>
         <p class="sub-t1">원하는 강의실을 선택하고 예약하세요.</p>
         <form class="space-y-2" th:action="@{/app/form}" th:object="${appCreateForm}" method="post">
-            <div th:replace="~{form_errors :: formErrorsFragment}"></div>
             <div class="space-y-8">
                 <div class="d-table">
                     <label for="date">날짜</label><br>

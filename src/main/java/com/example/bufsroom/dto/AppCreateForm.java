@@ -1,27 +1,35 @@
 package com.example.bufsroom.dto;
 
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
+import com.example.bufsroom.user.AppForm;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.sql.Date;
 
-
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 public class AppCreateForm {
-	@NotNull
+
 	private Date startDate;
-	@NotNull
 	private String startTime;
-	@NotNull
 	private String endTime;
-	@NotEmpty
 	private String school;
-	@NotEmpty
 	private String classroom;
-	@NotEmpty
 	private String purpose;
+
+	public AppForm toEntity(){
+		return AppForm.builder()
+				.startDate(startDate)
+				.startTime(startTime)
+				.endTime(endTime)
+				.school(school)
+				.classroom(classroom)
+				.purpose(purpose)
+				.build();
+	}
 
 }
